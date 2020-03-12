@@ -87,3 +87,5 @@
 (package! tablegen-mode :ignore t)
 (package! awesome-tab :recipe (:host github :repo "manateelazycat/awesome-tab"))
 (package! highlight-symbol)
+
+(package! counsel-etags)
