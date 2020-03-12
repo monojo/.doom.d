@@ -49,10 +49,10 @@
  :n "C-,"  #'+my/find-references
  :n "M-,"  (λ! (+my/find-references (+my//folder-param t)))
  ;; all symbols
- :n ";"    (λ! (if lsp-mode
-                    (progn (+my/avy-document-symbol t)
-                           (+my/find-definitions))
-                  (avy-goto-word-0 nil)))
+ ;; :n ";"    (λ! (if lsp-mode
+ ;;                    (progn (+my/avy-document-symbol t)
+ ;;                           (+my/find-definitions))
+ ;;                  (avy-goto-word-0 nil)))
  ;; outline
  :n "z;"   (λ! (+my/avy-document-symbol nil))
 
