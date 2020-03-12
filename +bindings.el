@@ -40,6 +40,7 @@
  :n "M-;"  #'eval-expression
  :n "M-."  #'+lookup/definition
  :n "M-f"  #'swiper
+ :n "/"  #'swiper
  :n "M-j"  #'+my/find-definitions
 
  :n [tab]  #'evil-window-next
@@ -64,6 +65,7 @@
  :n "[ M-u" #'symbol-overlay-switch-backward
  :n "] M-i" #'symbol-overlay-switch-forward
 
+ :n "Q" #'kill-current-buffer
  (:prefix "x"
    :n ";" (λ! (+my/avy-document-symbol t) (+my/find-references))
 
@@ -180,6 +182,23 @@
      "d" #'toggle-debug-on-error
      "D" #'+my/realtime-elisp-doc
      )
+   )
+
+(map! :localleader
+   :m "b" #'+ivy/switch-workspace-buffer
+   :m "f" #'+default/find-file-under-here
+   :m "1" (λ! (awesome-tab-select-visible-nth-tab 1))
+   :m "2" (λ! (awesome-tab-select-visible-nth-tab 2))
+   :m "3" (λ! (awesome-tab-select-visible-nth-tab 3))
+   :m "4" (λ! (awesome-tab-select-visible-nth-tab 4))
+   :m "5" (λ! (awesome-tab-select-visible-nth-tab 5))
+   :m "6" (λ! (awesome-tab-select-visible-nth-tab 6))
+   :m "7" (λ! (awesome-tab-select-visible-nth-tab 7))
+   :m "8" (λ! (awesome-tab-select-visible-nth-tab 8))
+   :m "9" (λ! (awesome-tab-select-visible-nth-tab 9))
+   :m "0" (λ! (awesome-tab-select-visible-nth-tab 0))
+   :m "h" #'highlight-symbol
+   :m "cc" #'evilnc-comment-or-uncomment-lines
    )
 
 (map!

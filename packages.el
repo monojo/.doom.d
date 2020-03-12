@@ -77,6 +77,7 @@
 (package! d-mode)
 
 (disable-packages! company-prescient)
+(package! hl-line :disable t)
 
 (package! ccls)
 (package! clang-format)
@@ -84,3 +85,5 @@
 (package! llvm-mode :ignore t)
 (package! modern-cpp-font-lock)
 (package! tablegen-mode :ignore t)
+(package! awesome-tab :recipe (:host github :repo "manateelazycat/awesome-tab"))
+(package! highlight-symbol)

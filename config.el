@@ -40,7 +40,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -134,21 +134,21 @@
         "l" #'lsp-ui-peek--select-next-file
         )
 
-  (defhydra hydra/ref (evil-normal-state-map "x")
-    "reference"
-    ("p" (-let [(i . n) (lsp-ui-find-prev-reference)]
-           (if (> n 0) (message "%d/%d" i n))) "prev")
-    ("n" (-let [(i . n) (lsp-ui-find-next-reference)]
-           (if (> n 0) (message "%d/%d" i n))) "next")
-    ("R" (-let [(i . n) (lsp-ui-find-prev-reference '(:role 8))]
-           (if (> n 0) (message "read %d/%d" i n))) "prev read" :bind nil)
-    ("r" (-let [(i . n) (lsp-ui-find-next-reference '(:role 8))]
-           (if (> n 0) (message "read %d/%d" i n))) "next read" :bind nil)
-    ("W" (-let [(i . n) (lsp-ui-find-prev-reference '(:role 16))]
-           (if (> n 0) (message "write %d/%d" i n))) "prev write" :bind nil)
-    ("w" (-let [(i . n) (lsp-ui-find-next-reference '(:role 16))]
-           (if (> n 0) (message "write %d/%d" i n))) "next write" :bind nil)
-    )
+  ;; (defhydra hydra/ref (evil-normal-state-map "x")
+  ;;   "reference"
+  ;;   ("p" (-let [(i . n) (lsp-ui-find-prev-reference)]
+  ;;          (if (> n 0) (message "%d/%d" i n))) "prev")
+  ;;   ("n" (-let [(i . n) (lsp-ui-find-next-reference)]
+  ;;          (if (> n 0) (message "%d/%d" i n))) "next")
+  ;;   ("R" (-let [(i . n) (lsp-ui-find-prev-reference '(:role 8))]
+  ;;          (if (> n 0) (message "read %d/%d" i n))) "prev read" :bind nil)
+  ;;   ("r" (-let [(i . n) (lsp-ui-find-next-reference '(:role 8))]
+  ;;          (if (> n 0) (message "read %d/%d" i n))) "next read" :bind nil)
+  ;;   ("W" (-let [(i . n) (lsp-ui-find-prev-reference '(:role 16))]
+  ;;          (if (> n 0) (message "write %d/%d" i n))) "prev write" :bind nil)
+  ;;   ("w" (-let [(i . n) (lsp-ui-find-next-reference '(:role 16))]
+  ;;          (if (> n 0) (message "write %d/%d" i n))) "next write" :bind nil)
+  ;;   )
   )
 
 (setq magit-repository-directories '(("~/Dev" . 2)))
@@ -455,7 +455,7 @@
      )
    (:localleader
      :n "a" #'ccls/references-address
-     :n "f" #'ccls/references-not-call
+     ;; :n "f" #'ccls/references-not-call
      :n "lp" #'ccls-preprocess-file
      :n "lf" #'ccls-reload
      :n "m" #'ccls/references-macro
@@ -512,6 +512,23 @@
 (use-package! modern-cpp-font-lock
   :hook (c++-mode . modern-c++-font-lock-mode))
 
+(use-package! awesome-tab
+  :config
+  (awesome-tab-mode t)
+  (setq
+     awesome-tab-show-tab-index t
+        )
+  )
+(use-package! ivy
+  :config
+  (setq
+   ;; use fuzzy finding
+   ivy-re-builders-alist '((swiper . ivy--regex-plus)
+                           (swiper-isearch . ivy--regex-plus)
+                           (counsel-rg . ivy--regex-plus)
+                           (t . ivy--regex-fuzzy))
+   )
+  )
 ;;; private/my-cc/autoload.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
