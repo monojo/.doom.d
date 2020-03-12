@@ -97,8 +97,8 @@
        (lookup              ; navigate your code and its documentation
         +dictionary
         +docstes)
-       ;;lsp
        ;;macos             ; MacOS-specific commands
+       lsp                 ; LSP support
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds

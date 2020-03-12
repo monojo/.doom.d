@@ -31,6 +31,7 @@
  :n "M-."  #'+lookup/definition
  ;; :n "M-f"  #'swiper
  :n "/"  #'swiper
+ :n "f" #'avy-goto-char
  ;; :n "M-j"  #'+my/find-definitions
 
  :n [tab]  #'evil-window-next
@@ -151,7 +152,7 @@
    :m "8" (λ! (awesome-tab-select-visible-nth-tab 8))
    :m "9" (λ! (awesome-tab-select-visible-nth-tab 9))
    :m "0" (λ! (awesome-tab-select-visible-nth-tab 0))
-   :m "h" #'highlight-symbol
+   :m "h" #'symbol-overlay-put
    :m "cc" #'evilnc-comment-or-uncomment-lines
    :m "W" #'counsel-rg-thing-at-point
    :m "s" #'yas-insert-snippet
