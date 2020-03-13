@@ -142,7 +142,9 @@
 
 (map! :localleader
    :m "b" #'+ivy/switch-workspace-buffer
-   :m "f" #'+default/find-file-under-here
+   ;; :m "f" #'+default/find-file-under-here
+   :desc "Find file in project"         :m "f" #'projectile-find-file
+   :desc "Find file from here"          :m "F" #'+default/find-file-under-here
    :m "1" (λ! (awesome-tab-select-visible-nth-tab 1))
    :m "2" (λ! (awesome-tab-select-visible-nth-tab 2))
    :m "3" (λ! (awesome-tab-select-visible-nth-tab 3))
@@ -155,7 +157,9 @@
    :m "0" (λ! (awesome-tab-select-visible-nth-tab 0))
    :m "h" #'symbol-overlay-put
    :m "cc" #'evilnc-comment-or-uncomment-lines
-   :m "w" #'counsel-rg-thing-at-point
+   :m "cu" #'evilnc-comment-or-uncomment-lines
+   ;; :m "w" #'counsel-rg-thing-at-point
+   :m "w" #'+default/search-project-for-symbol-at-point
    :m "s" #'yas-insert-snippet
    :m "t" #'imenu
    :m "T" #'counsel-etags-list-tag

@@ -10,6 +10,7 @@
 (defun counsel-rg-thing-at-point ()
       (interactive)
       (ivy-with-thing-at-point 'counsel-rg))
+      ;; (ivy-with-thing-at-point '+default/search-project))
 
 ;; ==== ccls functions ====
 (defun ccls/callee ()
