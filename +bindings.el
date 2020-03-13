@@ -18,27 +18,25 @@
  ;; localleader
  :m ","    nil
 
- (:map prog-mode-map
-   :n "H"  #'lsp-ui-peek-jump-backward
-   :n "L"  #'lsp-ui-peek-jump-forward
-   :m "C-H"  #'+my/xref-jump-backward-file
-   :m "C-L"  #'+my/xref-jump-forward-file
-   )
+ ;; (:map prog-mode-map
+ ;;   :n "H"  #'lsp-ui-peek-jump-backward
+ ;;   :n "L"  #'lsp-ui-peek-jump-forward
+ ;;   :m "C-H"  #'+my/xref-jump-backward-file
+ ;;   :m "C-L"  #'+my/xref-jump-forward-file
+ ;;   )
 
  ;; :n "M-u" (+my/simulate-key "[")
  ;; :n "M-i" (+my/simulate-key "]")
- :n "M-;"  #'eval-expression
- :n "M-."  #'+lookup/definition
+ ;; :n "M-;"  #'eval-expression
  ;; :n "M-f"  #'swiper
+ ;; :n "M-j"  #'+my/find-definitions
+ :n "M-."  #'+lookup/definition
  :n "/"  #'swiper
  :n "f" #'avy-goto-char
- ;; :n "M-j"  #'+my/find-definitions
 
- :n [tab]  #'evil-window-next
+ ;; :n [tab]  #'evil-window-next
  :n "C-1" #'+popup/raise
  :n "C-c a" #'org-agenda
- :n "C-,"  #'+my/find-references
- :n "M-,"  (λ! (+my/find-references (+my//folder-param t)))
  ;; all symbols
  ;; :n ";"    (λ! (if lsp-mode
  ;;                    (progn (+my/avy-document-symbol t)
@@ -46,15 +44,16 @@
  ;;                  (avy-goto-word-0 nil)))
  ;; outline
  :n "z;"   (λ! (+my/avy-document-symbol nil))
-
+ :n "M-,"  (λ! (+my/find-references (+my//folder-param t)))
  :n "ga"   #'+my/workspace-symbol
+ :n "C-,"  #'+my/find-references
+ :n "gf"   #'+my/ffap
+
  :n "gA"   (λ! (setq current-prefix-arg t) (call-interactively #'+my/workspace-symbol))
  :n "gc"   #'evilnc-comment-or-uncomment-lines
- :n "gf"   #'+my/ffap
  :n "go"   (λ! (message "%S" (text-properties-at (point))))
-
-
  :n "Q" #'kill-current-buffer
+
  (:prefix "x"
    :n ";" (λ! (+my/avy-document-symbol t) (+my/find-references))
 
@@ -66,6 +65,8 @@
    :n "i" #'ccls-inheritance-hierarchy         ; base hierarchy
    :n "I" (λ! (ccls-inheritance-hierarchy t)) ; derived hierarchy
 
+   :n "r" #'ccls/references-read
+   :n "w" #'ccls/references-write
    ;; $ccls/call
    :n "c" #'ccls/caller
    :n "C" #'ccls/callee
@@ -154,8 +155,14 @@
    :m "0" (λ! (awesome-tab-select-visible-nth-tab 0))
    :m "h" #'symbol-overlay-put
    :m "cc" #'evilnc-comment-or-uncomment-lines
-   :m "W" #'counsel-rg-thing-at-point
+   :m "w" #'counsel-rg-thing-at-point
    :m "s" #'yas-insert-snippet
    :m "t" #'imenu
    :m "T" #'counsel-etags-list-tag
+   ;; xref style, more general
+   :n "r" #'xref-find-references
+   :n "d" #'xref-find-definitions
+   ;; :n "r" #'lsp-ui-peek-find-references
+   ;; :n "r" #'lsp-find-references
+   ;; :n "d" #'lsp-ui-peek-find-definitions
    )

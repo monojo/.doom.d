@@ -1,4 +1,21 @@
 
+;(map!
+ ;;; localleader
+
+ ;(:map prog-mode-map
+   ;:m "RET" #'+ivy/switch-workspace-buffer
+   ;;; Override default :n < > ( )
+   ;;; :nm "<" #'lispyville-previous-opening
+   ;;; :nm ">" #'lispyville-next-closing
+
+   ;:n "C-h" #'lispyville-backward-up-list
+   ;:n "C-j" #'lispyville-forward-sexp
+   ;:n "C-k" #'lispyville-backward-sexp
+   ;:n "C-l" #'lispyville-up-list
+   ;)
+ ;:n "[ M-u" #'symbol-overlay-switch-backward
+ ;:n "] M-i" #'symbol-overlay-switch-forward
+ ;)
 ;; (map!
 ;;  (:after evil-collection-info
 ;;    :map Info-mode-map

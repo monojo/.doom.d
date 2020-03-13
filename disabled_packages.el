@@ -16,7 +16,7 @@
 ;; edit chrome text in emacs
 (package! atomic-chrome :disable t)
 ;; highlight current line, but does not work well with hl-symbol
-(package! hl-line :disable t)
+;;(package! hl-line :disable t)
 ;; a lsp client
 (package! eglot :disable t)
 ;; lisp evil plug
